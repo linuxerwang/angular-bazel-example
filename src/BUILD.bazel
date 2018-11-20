@@ -2,6 +2,7 @@ package(default_visibility = ["//visibility:public"])
 
 load("@angular//:index.bzl", "ng_module")
 load("@build_bazel_rules_typescript//:defs.bzl", "ts_config", "ts_devserver")
+load("@build_bazel_rules_nodejs//:defs.bzl", "rollup_bundle", "web_package", "history_server")
 
 ts_config(
     name = "tsconfig-test",
@@ -25,7 +26,6 @@ ng_module(
         "@npm//@ngrx/store",
     ],
 )
-
 
 # This devserver is written in Go and is super-fast.
 # It doesn't run any bundler or code splitter. Instead, it concatenates
@@ -60,8 +60,6 @@ ts_devserver(
     deps = ["//src"],
 )
 
-load("@build_bazel_rules_nodejs//:defs.bzl", "nodejs_binary", "rollup_bundle")
-
 rollup_bundle(
     name = "bundle",
     # These Angular routes may be lazy-loaded at runtime.
@@ -80,8 +78,6 @@ rollup_bundle(
     ],
 )
 
-load(":web_package.bzl", "web_package")
-
 web_package(
     name = "prodapp",
     index_html = "index.html",
@@ -97,10 +93,8 @@ web_package(
     ],
 )
 
-load("@build_bazel_rules_nodejs//:defs.bzl", "history_server")
-
 history_server(
     name = "prodserver",
     data = [":prodapp"],
-    templated_args = ["src/www"],
+    templated_args = ["src/prodapp"],
 )
