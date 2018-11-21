@@ -10,8 +10,15 @@ workspace(name = "angular_bazel_example")
 http_archive(
     name = "build_bazel_rules_nodejs",
     # These sources are on the web_package branch
-    url = "https://github.com/alexeagle/rules_nodejs/archive/cce92bc1eff212d2dc4b605c52bcf37fe0623f18.zip",
-    strip_prefix = "rules_nodejs-cce92bc1eff212d2dc4b605c52bcf37fe0623f18",
+    url = "https://github.com/alexeagle/rules_nodejs/archive/944ec65f0ce0c0960e44b0910a198bc56cd494ed.zip",
+    strip_prefix = "rules_nodejs-944ec65f0ce0c0960e44b0910a198bc56cd494ed",
+)
+
+http_archive(
+    name = "build_bazel_rules_typescript",
+    # These sources are on the web_package branch
+    url = "https://github.com/alexeagle/rules_typescript/archive/0deb84e82682be4f2cf13723e18c2ed4a2f6bd86.zip",
+    strip_prefix = "rules_typescript-0deb84e82682be4f2cf13723e18c2ed4a2f6bd86",
 )
 
 # The Bazel buildtools repo contains tools like the BUILD file formatter, buildifier
