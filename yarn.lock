@@ -117,10 +117,10 @@
   resolved "https://registry.yarnpkg.com/@bazel/ibazel/-/ibazel-0.5.0.tgz#76f269bd60d866e2aa9e86b25c456d18fee2ef54"
   integrity sha512-V61k9M/FP9cF8W7xz1y32WsBAqS7GP4Um/SYxV1+lO4y0Zd1dHpYk9i4f6LQuN70JfqBNTq3b5UpyD7DpqUplQ==
 
-"@bazel/karma@0.20.3":
-  version "0.20.3"
-  resolved "https://registry.yarnpkg.com/@bazel/karma/-/karma-0.20.3.tgz#a63bb82b4887ae8c0d01f3028c6fa4764470851d"
-  integrity sha512-IgWfTpK9XLEI977DS2kHIEO1QfFTEOBxeNDDjHtd1onmzyMCLROphTOBZ/g42ybUIWyJhS9DK4U3bLSMQE0Bng==
+"@bazel/karma@0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@bazel/karma/-/karma-0.21.0.tgz#c5ed4c141f44d0e7e18586ad4cff5bd54f70f3cc"
+  integrity sha512-V5kxijZ7j/6x7+yNxPhhPrjO0APtNrlr5Gg/I9JRy3/SE3Y88yrPNIiEApLkfYWYWGQuoJO2LifUZA8BOXwLEA==
   dependencies:
     jasmine-core "2.8.0"
     karma alexeagle/karma#fa1a84ac881485b5657cb669e9b4e5da77b79f0a
@@ -133,7 +133,16 @@
     requirejs "2.3.5"
     tmp "0.0.33"
 
-"@bazel/typescript@0.20.3", "@bazel/typescript@^0.20.3":
+"@bazel/typescript@0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@bazel/typescript/-/typescript-0.21.0.tgz#41c304f77a42c6a016280d0f4c20e0749c3f4b2a"
+  integrity sha512-ASXj0RFybmqoa3LwqkTU3gNkX9bY9wL/VDNo5hlp9pynYWl4RMpe9V3m/qDIdtSuLJ+qD+Z3FKT/OcpWQHMlYA==
+  dependencies:
+    protobufjs "5.0.3"
+    source-map-support "0.5.9"
+    tsutils "2.27.2"
+
+"@bazel/typescript@^0.20.3":
   version "0.20.3"
   resolved "https://registry.yarnpkg.com/@bazel/typescript/-/typescript-0.20.3.tgz#51dcc369c2af0d7f2311d6e692d07776492060f4"
   integrity sha512-BZmfzaNkgS++53CGEUk5p9FXOG+k8FNWCDbxzYljoIGP60aIkw4UgRQ24ReBwhCMg6M6KW609yje7AvDZkA6bg==
@@ -2383,7 +2392,7 @@ karma-sourcemap-loader@0.3.7:
   dependencies:
     graceful-fs "^4.1.2"
 
-karma@alexeagle/karma#fa1a84ac881485b5657cb669e9b4e5da77b79f0a:
+"karma@github:alexeagle/karma#fa1a84ac881485b5657cb669e9b4e5da77b79f0a":
   version "1.7.1"
   resolved "https://codeload.github.com/alexeagle/karma/tar.gz/fa1a84ac881485b5657cb669e9b4e5da77b79f0a"
   dependencies:
