@@ -17,8 +17,8 @@ http_archive(
 http_archive(
     name = "build_bazel_rules_typescript",
     # These sources are on the web_package branch
-    url = "https://github.com/alexeagle/rules_typescript/archive/0deb84e82682be4f2cf13723e18c2ed4a2f6bd86.zip",
-    strip_prefix = "rules_typescript-0deb84e82682be4f2cf13723e18c2ed4a2f6bd86",
+    url = "https://github.com/alexeagle/rules_typescript/archive/74a8d684886e727100db2254620551dfcff6ecee.zip",
+    strip_prefix = "rules_typescript-74a8d684886e727100db2254620551dfcff6ecee",
 )
 
 # The Bazel buildtools repo contains tools like the BUILD file formatter, buildifier

@@ -2,7 +2,7 @@ package(default_visibility = ["//visibility:public"])
 
 load("@angular//:index.bzl", "ng_module")
 load("@build_bazel_rules_typescript//:defs.bzl", "ts_config", "ts_devserver")
-load("@build_bazel_rules_nodejs//:defs.bzl", "rollup_bundle", "web_package", "history_server")
+load("@build_bazel_rules_nodejs//:defs.bzl", "history_server", "rollup_bundle", "web_package")
 
 ts_config(
     name = "tsconfig-test",
@@ -35,15 +35,13 @@ ts_devserver(
     name = "devserver",
     # serve these files rooted at /
     additional_root_paths = [
+        "npm/node_modules/zone.js/dist",
         "npm/node_modules/@angular/material/prebuilt-themes",
         "npm/node_modules/@ngrx/store/bundles",
     ],
     # Start from the development version of the main
     entry_module = "angular_bazel_example/src/main.dev",
-    # Zone.js should be included in the JS bundle before require.js
-    bootstrap = [
-        "@npm//node_modules/zone.js:dist/zone.min.js",
-    ],
+    index_html = "index.html",
     # These scripts will be included in the JS bundle after require.js
     # They should have only named UMD modules, or require.js will throw.
     scripts = [
@@ -51,14 +49,19 @@ ts_devserver(
         ":module-id.js",
         "@npm//node_modules/tslib:tslib.js",
     ],
-    # This is the URL we'll point our <script> tag at
-    serving_path = "/bundle.js",
     # Serve these files in addition to the JavaScript bundle
+    # The corresponding <script> or <link> tags will be injected into the index_html
     static_files = [
         "@npm//node_modules/@angular/material:prebuilt-themes/deeppurple-amber.css",
+        "@npm//node_modules/zone.js:dist/zone.min.js",
+    ],
+    # Serve these files but don't inject tags for them into the index file
+    # This might be because we only want to lazy-load these scripts on-demand,
+    # or because they aren't compatible with Require.js so we must use a runtime
+    # loader to load them.
+    data = [
         "@npm//node_modules/@ngrx/store:bundles/store.umd.min.js",
     ],
-    index_html = "index.html",
     # Tell Bazel to build the sources first
     deps = ["//src"],
 )
@@ -83,7 +86,6 @@ rollup_bundle(
 
 web_package(
     name = "prodapp",
-    index_html = "index.html",
     # do not sort
     assets = [
         "@npm//node_modules/@angular/material:prebuilt-themes/deeppurple-amber.css",
@@ -94,6 +96,7 @@ web_package(
     data = [
         ":bundle",
     ],
+    index_html = "index.html",
 )
 
 history_server(
